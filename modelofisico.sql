@@ -24,7 +24,8 @@ CREATE TABLE PEDIDO_PECA (
     codigo_peca NUMERIC(5),
     codigo_pedido NUMERIC(5),
     quantidade_solicitada NUMERIC(5),
-    cotacao_peca NUMERIC(9,2)
+    cotacao_peca NUMERIC(9,2),
+    PRIMARY KEY (codigo_peca, codigo_pedido)
 );
 
 CREATE TABLE PECA (
@@ -55,9 +56,6 @@ ALTER TABLE PEDIDO_PECA ADD CONSTRAINT FK_CODIGO_PECA
 ALTER TABLE PEDIDO_PECA ADD CONSTRAINT FK_CODIGO_PEDIDO
     FOREIGN KEY (codigo_pedido)
     REFERENCES PEDIDO(codigo_pedido);
-    
-ALTER TABLE PEDIDO_PECA ADD CONSTRAINT PK_CODIGO_MULTIPLO
-    PRIMARY KEY (codigo_peca, codigo_pedido);
  
 ALTER TABLE PECA ADD CONSTRAINT FK_CODIGO_DEPOSITO
     FOREIGN KEY (codigo_deposito)
